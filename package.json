@@ -1,0 +1,60 @@
+{
+  "name": "@gocodingnow/rn-size-matters",
+  "version": "0.0.1",
+  "description": "React Native Size Matters Typescript",
+  "author": "I Le - Kevin <ild.freelancer@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ildfreelancer/rn-size-matters.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ildfreelancer/rn-size-matters/issues"
+  },
+  "main": "post-init-script.js",
+  "license": "MIT",
+  "keywords": [
+    "gocodingnow",
+    "react-native",
+    "typescript",
+    "jest",
+    "scaling",
+    "size-matters"
+  ],
+  "peerDependencies": {
+    "react-native": "*"
+  },
+  "homepage": "https://github.com/ildfreelancer/rn-size-matters#readme",
+  "scripts": {
+    "test": "ts-jest --coverage",
+    "test:watch": "ts-jest --watch",
+    "build": "tsc"
+  },
+  "files": [
+    "lib/**/*.js",
+    "lib/**/*.js.map",
+    "lib/**/*.d.ts",
+    "extend.js",
+    "extend.d.ts",
+    "index.js",
+    "index.d.ts",
+    "LICENSE",
+    "README.md"
+  ],
+  "devDependencies": {
+    "@babel/preset-env": "^7.21.5",
+    "@commitlint/cli": "^16.0.2",
+    "@commitlint/config-conventional": "^16.0.0",
+    "@commitlint/cz-commitlint": "^16.0.0",
+    "@commitlint/prompt-cli": "^16.0.0",
+    "@types/react-native": "^0.72.1",
+    "commitizen": "^4.2.4",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^7.0.4",
+    "typescript": "^5.0.4"
+  },
+  "config": {
+    "commitizen": {
+      "path": "@commitlint/cz-commitlint"
+    }
+  }
+}
