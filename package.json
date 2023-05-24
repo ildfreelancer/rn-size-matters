@@ -1,6 +1,6 @@
 {
   "name": "@gocodingnow/rn-size-matters",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "React Native Size Matters Typescript",
   "author": "I Le - Kevin <ild.freelancer@gmail.com>",
   "repository": {
@@ -10,7 +10,7 @@
   "bugs": {
     "url": "https://github.com/ildfreelancer/rn-size-matters/issues"
   },
-  "main": "post-init-script.js",
+  "main": "index.js",
   "license": "MIT",
   "keywords": [
     "gocodingnow",

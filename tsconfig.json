@@ -16,10 +16,9 @@
     ],
   },
   "include": [
-    "lib/index.ts",
+    "index.ts",
     "extend.ts",
     "lib",
-    "@types",
-    "index.d.ts"
-  ],
+    "@types"
+  ]
 }
