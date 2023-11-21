@@ -41,16 +41,16 @@
     "README.md"
   ],
   "devDependencies": {
-    "@babel/preset-env": "^7.21.5",
-    "@commitlint/cli": "^16.0.2",
-    "@commitlint/config-conventional": "^16.0.0",
-    "@commitlint/cz-commitlint": "^16.0.0",
-    "@commitlint/prompt-cli": "^16.0.0",
-    "@types/react-native": "^0.72.1",
-    "commitizen": "^4.2.4",
+    "@babel/preset-env": "^7.22.10",
+    "@commitlint/cli": "^17.7.1",
+    "@commitlint/config-conventional": "^17.7.0",
+    "@commitlint/cz-commitlint": "^17.7.1",
+    "@commitlint/prompt-cli": "^17.7.1",
+    "@types/react-native": "^0.72.2",
+    "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
-    "husky": "^7.0.4",
-    "typescript": "^5.0.4"
+    "husky": "^8.0.3",
+    "typescript": "^5.1.6"
   },
   "config": {
     "commitizen": {

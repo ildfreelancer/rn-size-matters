@@ -1,34 +1,21 @@
-import { StyleSheet, ViewStyle, TextStyle, ImageStyle, RegisteredStyle } from "react-native";
+import * as RN from "react-native";
+
 import deepMap from "./deep-map";
 
 // Groups                     Size                   Func Factor
 //                             1                      2    3
 const validScaleSheetRegex = /^(-?\d+(?:\.\d{1,3})?)@(mv?s(\d+(?:\.\d{1,2})?)?|s|vs)r?$/;
-export interface StringifiedStyles {
-  fontSize?: string | number;
-  letterSpacing?: string | number;
-  lineHeight?: string | number;
-  textShadowRadius?: string | number;
-  borderBottomLeftRadius?: string | number;
-  borderBottomRightRadius?: string | number;
-  borderTopLeftRadius?: string | number;
-  borderTopRightRadius?: string | number;
-  borderBottomWidth?: string | number;
-  borderTopWidth?: string | number;
-  borderRightWidth?: string | number;
-  borderLeftWidth?: string | number;
-  borderRadius?: string | number;
-  shadowRadius?: string | number;
-  borderWidth?: string | number;
-  aspectRatio?: string | number;
-  rotation?: string | number;
-  scaleX?: string | number;
-  scaleY?: string | number;
-  translateX?: string | number;
-  translateY?: string | number;
-}
 
-type NamedStyles<T> = { [P in keyof T]: ViewStyle | TextStyle | ImageStyle | StringifiedStyles };
+type Scale = `${number}@s${"r" | ""}`;
+type VerticalScale = `${number}@vs${"r" | ""}`;
+type ModerateScale = `${number}@ms${number | ""}${"r" | ""}`;
+type ModerateVerticalScale = `${number}@mvs${number | ""}${"r" | ""}`;
+type Size = Scale | VerticalScale | ModerateScale | ModerateVerticalScale;
+type WithSize<T> = { [P in keyof T]: number extends T[P] ? Size | T[P] : T[P] };
+type ViewStyle = WithSize<RN.ViewStyle>;
+type TextStyle = WithSize<RN.TextStyle>;
+type ImageStyle = WithSize<RN.ImageStyle>;
+type NamedStyles<T> = { [P in keyof T]: ViewStyle | TextStyle | ImageStyle };
 
 const scaleByAnnotation = (
   scale: (v: number) => number,
@@ -88,10 +75,10 @@ const scaledSheetCreator = (
 ) => {
   const scaleFunc = scaleByAnnotation(scale, verticalScale, moderateScale, moderateVerticalScale);
   const create = <T extends NamedStyles<T> | NamedStyles<any>>(stylesObject: T) =>
-    StyleSheet.create(deepMap(stylesObject, scaleFunc)) as {
-      [P in keyof T]: RegisteredStyle<
-        T[P] & Record<Extract<keyof T[P], keyof StringifiedStyles>, number>
-      >;
+    RN.StyleSheet.create(deepMap(stylesObject, scaleFunc)) as {
+      [P in keyof T]: RN.RegisteredStyle<{
+        [S in keyof T[P]]: T[P][S] extends Size ? number : T[P][S];
+      }>;
     };
   return { create };
 };
