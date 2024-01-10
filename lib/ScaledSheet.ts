@@ -6,16 +6,26 @@ import deepMap from "./deep-map";
 //                             1                      2    3
 const validScaleSheetRegex = /^(-?\d+(?:\.\d{1,3})?)@(mv?s(\d+(?:\.\d{1,2})?)?|s|vs)r?$/;
 
-type Scale = `${number}@s${"r" | ""}`;
-type VerticalScale = `${number}@vs${"r" | ""}`;
-type ModerateScale = `${number}@ms${number | ""}${"r" | ""}`;
-type ModerateVerticalScale = `${number}@mvs${number | ""}${"r" | ""}`;
+type Scale = `${number}@s`;
+type VerticalScale = `${number}@vs`;
+type ModerateScale = `${number}@ms${number | ""}`;
+type ModerateVerticalScale = `${number}@mvs${number | ""}`;
 type Size = Scale | VerticalScale | ModerateScale | ModerateVerticalScale;
 type WithSize<T> = { [P in keyof T]: number extends T[P] ? Size | T[P] : T[P] };
 type ViewStyle = WithSize<RN.ViewStyle>;
 type TextStyle = WithSize<RN.TextStyle>;
 type ImageStyle = WithSize<RN.ImageStyle>;
 type NamedStyles<T> = { [P in keyof T]: ViewStyle | TextStyle | ImageStyle };
+
+// export namespace ScaledSheet {
+//   export function create<T extends NamedStyles<T> | NamedStyles<any>>(
+//     stylesObject: T
+//   ): {
+//     [P in keyof T]: RN.RegisteredStyle<{
+//       [S in keyof T[P]]: T[P][S] extends Size ? number : T[P][S];
+//     }>;
+//   };
+// }
 
 const scaleByAnnotation = (
   scale: (v: number) => number,
