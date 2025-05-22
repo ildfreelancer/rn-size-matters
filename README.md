@@ -27,8 +27,8 @@ In App.tsx, set default resolution at the root,
 ```jsx
 
 const SIZE_MATTERS_BASE_WIDTH = 375;
-const SIZE_MATTERS_BASE_WIDTH = 812;
+const SIZE_MATTERS_BASE_HEIGHT= 812;
 
 setSizeMattersBaseWidth(SIZE_MATTERS_BASE_WIDTH);
-setSizeMattersBaseHeight(SIZE_MATTERS_BASE_WIDTH);
+setSizeMattersBaseHeight(SIZE_MATTERS_BASE_HEIGHT);
 ```
